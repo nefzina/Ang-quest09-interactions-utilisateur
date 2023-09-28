@@ -1,0 +1,6 @@
+<div *ngFor="let kitten of myKittenList">
+    <img [src]="kitten.image" [alt]="kitten.name" style="width: 250px">
+    <h3>Nom : {{kitten.name}}</h3>
+    <p>Race : {{kitten.race}}</p>
+    <p>Date d'anniv : {{kitten.birth}}</p>
+</div>

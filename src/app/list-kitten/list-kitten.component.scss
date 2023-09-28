@@ -1,0 +1,12 @@
+.lists {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  .allKitten {
+    display: flex;
+    flex-direction: column;
+    width: 47%;
+    max-width: 350px;
+  }
+}

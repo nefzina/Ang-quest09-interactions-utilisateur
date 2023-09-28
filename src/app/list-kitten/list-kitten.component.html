@@ -1,0 +1,21 @@
+<button (click)="displayForm = !displayForm">Ajouter un nouveau chaton</button>
+<app-create-kitten
+  *ngIf="displayForm"
+  (kittenSender)="onGetKitten($event)"
+></app-create-kitten>
+
+<div class="lists">
+  <div class="allKitten">
+    <div *ngFor="let kitty of kittenList">
+      <img [src]="kitty.image" [alt]="kitty.name" style="width: 250px" />
+      <h3>Nom : {{ kitty.name }}</h3>
+      <p>Race : {{ kitty.race }}</p>
+      <p>Date d'anniv : {{ kitty.birth }}</p>
+      <button (click)="adoption(kitty)">Adopter</button>
+    </div>
+  </div>
+
+  <div class="mykitten" >
+    <app-user-kitten [myKittenList]="adoptedKittenList"></app-user-kitten>
+  </div>
+</div>

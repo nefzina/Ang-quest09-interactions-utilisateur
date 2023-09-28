@@ -1,0 +1,49 @@
+<form (ngSubmit)="AddKitten()">
+  <fieldset>
+    <label for="name">Nom</label>
+    <input
+      type="text"
+      id="name"
+      [(ngModel)]="kitten.name"
+      #name="ngModel"
+      name="kittenName"
+      required
+    />
+  </fieldset>
+  <fieldset>
+    <label for="race">Race</label>
+    <input
+      type="text"
+      id="race"
+      [(ngModel)]="kitten.race"
+      #race="ngModel"
+      name="kittenRace"
+      required
+    />
+  </fieldset>
+
+  <fieldset>
+    <label for="birthday">Date de naissance</label>
+    <input
+      type="date"
+      id="birthday"
+      [(ngModel)]="kitten.birth"
+      #birth="ngModel"
+      name="kittenBirth"
+      required
+    />
+  </fieldset>
+
+  <fieldset>
+    <label for="link">Lien de photo</label>
+    <input
+      type="text"
+      id="link"
+      [(ngModel)]="kitten.image"
+      #link="ngModel"
+      name="kittenImg"
+    />
+  </fieldset>
+
+  <button type="submit">Ajouter</button>
+</form>

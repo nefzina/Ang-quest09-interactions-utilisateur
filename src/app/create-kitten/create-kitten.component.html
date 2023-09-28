@@ -1,4 +1,4 @@
-<form (ngSubmit)="AddKitten()">
+<form #myForm="ngForm" (ngSubmit)="myForm.valid && AddKitten()">
   <fieldset>
     <label for="name">Nom</label>
     <input
@@ -7,9 +7,17 @@
       [(ngModel)]="kitten.name"
       #name="ngModel"
       name="kittenName"
+      minlength="2"
+      maxlength="12"
       required
     />
   </fieldset>
+
+  <div *ngIf="myForm.submitted">
+    <small *ngIf="name.errors?.['required']">Nom est un champ requis</small>
+    <small *ngIf="name.errors?.['minlength']">Minimum 2 charactères</small>
+  </div>
+
   <fieldset>
     <label for="race">Race</label>
     <input
@@ -18,9 +26,15 @@
       [(ngModel)]="kitten.race"
       #race="ngModel"
       name="kittenRace"
+      minlength="2"
       required
     />
   </fieldset>
+
+  <div *ngIf="myForm.submitted">
+    <small *ngIf="race.errors?.['required']">Race est un champ requis</small>
+    <small *ngIf="race.errors?.['minlength']">Minimum 2 charactères</small>
+  </div>
 
   <fieldset>
     <label for="birthday">Date de naissance</label>
@@ -34,6 +48,10 @@
     />
   </fieldset>
 
+  <div *ngIf="myForm.submitted">
+    <small *ngIf="birth.errors?.['required']">Date est un champ requis</small>
+  </div>
+
   <fieldset>
     <label for="link">Lien de photo</label>
     <input
@@ -42,8 +60,15 @@
       [(ngModel)]="kitten.image"
       #link="ngModel"
       name="kittenImg"
+      minlength="10"
+      required
     />
   </fieldset>
+
+  <div *ngIf="myForm.submitted">
+    <small *ngIf="link.errors?.['required']">lien est un champ requis</small>
+    <small *ngIf="link.errors?.['minlength']">Minimum 10 charactères</small>
+  </div>
 
   <button type="submit">Ajouter</button>
 </form>
